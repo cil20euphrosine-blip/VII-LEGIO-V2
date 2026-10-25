@@ -1,4 +1,3 @@
-
 // ==========================================
 // CONSTANTES (fiches et tableaux relus)
 // ==========================================
@@ -20,13 +19,13 @@ const TAB_I = {1:[-1,-1,-1,-2,-3,-3],2:[null,0,0,-1,-2,-2],3:[null,1,1,0,null,-1
 const PLANET_O = {A:2,B:1,C:null,D:1,E:null,F:1,G:3,H:4};
 const ZONES = ['Désert','Pyramides','Village','Marais','Forêt','Eau','Glace'];
 const dirVectors = {'N':{x:0,y:1},'NE':{x:1,y:1},'E':{x:1,y:0},'SE':{x:1,y:-1},'S':{x:0,y:-1},'SO':{x:-1,y:-1},'O':{x:-1,y:0},'NO':{x:-1,y:1}};
-const ALIEN_FC = 5;   // repli si la race n'a pas de F.C. renseigné dans le Guide
-const RACES = {"AMOEBA": {"cat": "NON_SAPIENS", "type": "MONSTRA", "ref": "1/1", "missions": ["ELIMINATION"], "fc": null, "valeurElim": null, "valeurCapture": null, "milieuPrefere": {"nom": ["DESERT"], "bonus": 2}, "milieuNonViable": ["EAU"], "presences": [{"des": [1, 2, 3], "nombre": 1}, {"des": [4, 5], "nombre": 2}, {"des": [6], "nombre": 4}], "notes": "Le feu peut diviser sa force par 2 ou la priver de son principe vital ; une élimination excessive la rend inutilisable (tableau à consulter après élimination)."}, "CERBERUS": {"cat": "NON_SAPIENS", "type": "MONSTRA", "ref": "1/2", "missions": ["ELIMINATION", "CAPTURE"], "fc": null, "valeurElim": null, "valeurCapture": null, "milieuPrefere": {"nom": ["GLACE"], "bonus": 4}, "milieuNonViable": ["MARAIS"], "presences": [{"des": [1], "nombre": 1}, {"des": [2, 3], "nombre": 2}, {"des": [4, 5], "nombre": 3}, {"des": [6], "nombre": 4}], "notes": "Attaque en principe l'objectif le plus proche (l'équipage s'il est débarqué). Très recherché : capture de grande valeur."}, "SPHAERAE": {"cat": "NON_SAPIENS", "type": "MONSTRA", "ref": "1/4", "missions": ["ELIMINATION"], "fc": null, "valeurElim": null, "valeurCapture": null, "milieuPrefere": {"nom": ["DESERT", "GLACE"], "bonus": null}, "milieuNonViable": ["EAU", "PYRAMIDES"], "presences": [{"des": [1, 2], "nombre": 6}, {"des": [3, 4, 5], "nombre": 10}, {"des": [6], "nombre": 20}], "notes": "Attaquent directement le vaisseau (sauf en zone non viable). Si le vaisseau est absent, attaquent les équipages avec F.C. réduit. Les armes à air n'ont aucun effet."}, "LITOFAGUS": {"cat": "NON_SAPIENS", "type": "MONSTRA", "ref": "1/3", "missions": ["ELIMINATION"], "fc": 5, "valeurElim": null, "valeurCapture": null, "milieuPrefere": {"nom": ["PYRAMIDES"], "bonus": 1}, "milieuNonViable": ["FORET", "EAU", "MARAIS"], "presences": [{"des": [1, 2, 3, 4], "nombre": 2}, {"des": [5], "nombre": 4}, {"des": [6], "nombre": 6}], "notes": "Peut détruire les combinaisons des équipages à terre. Attaque les vaisseaux à défaut. Ne survit pas en captivité (pas de mission de capture)."}, "NUBIS_ARENAE": {"cat": "NON_SAPIENS", "type": "MONSTRA", "ref": "1/5", "missions": ["ELIMINATION"], "fc": null, "valeurElim": 6, "valeurCapture": null, "milieuPrefere": {"nom": ["DESERT"], "bonus": null}, "milieuNonViable": ["EAU", "FORET"], "presences": [{"des": [1, 2], "nombre": 1}, {"des": [3, 4], "nombre": 2}, {"des": [5, 6], "nombre": 3}], "notes": "Invisibles au radar. Dans le désert, on trouve toujours 3 N.A. ; dans les autres milieux, voir le tableau des présences. Aucune arme n'agit sauf SIL 4. Ils n'attaquent pas les équipages à terre ; repoussés par les boucliers dans 50 % (tirage pair). Tableau des radars détruits relevé sur le livre (tableau_radars)."}, "SUBTERRANEI": {"cat": "NON_SAPIENS", "type": "NON_VISIBLE", "ref": "1/6", "missions": ["ELIMINATION", "CAPTURE"], "fc": 8, "valeurElim": 3, "valeurCapture": 16, "milieuPrefere": {"nom": ["MARAIS"], "bonus": 2}, "milieuNonViable": ["EAU", "GLACE"], "presences": [{"des": [1, 2], "nombre": 1}, {"des": [3, 4, 5], "nombre": 2}, {"des": [6], "nombre": 3}], "notes": "Invisibles. Attaquent surtout les vaisseaux atterris, sauf attaque préventive des équipages. Capture très recherchée (voies ferrées)."}, "AERIFORMI": {"cat": "NON_SAPIENS", "type": "NON_VISIBLE", "ref": "1/7", "missions": ["ELIMINATION"], "fc": 2, "valeurElim": 5, "valeurCapture": null, "milieuPrefere": {"nom": ["FORET"], "bonus": 3}, "milieuNonViable": ["VILLAGE", "EAU"], "presences": [{"des": [1, 2], "nombre": 1}, {"des": [3], "nombre": 2}, {"des": [4], "nombre": 3}, {"des": [5, 6], "nombre": 5}], "notes": "Très dangereux : se désintègrent au contact des boucliers activés ; sans bouclier, tuent tout l'équipage à bord sauf l'U.C. Détruits seulement par laser ou silicones."}, "MIMESIS": {"cat": "NON_SAPIENS", "type": "NON_VISIBLE", "ref": "1/8", "missions": ["ELIMINATION"], "fc": 6, "valeurElim": 5, "valeurCapture": null, "milieuPrefere": {"nom": ["GLACE", "DESERT"], "bonus": 1}, "milieuNonViable": ["FORET"], "presences": [{"des": [1, 2, 3, 4], "nombre": 1}, {"des": [5, 6], "nombre": 2}], "notes": "Invisibles. Ne peuvent pas être capturés vivants (ne survivent pas hors de leur atmosphère)."}, "LIANA_NIGRA": {"cat": "NON_SAPIENS", "type": "VELENOSI", "ref": "2/1", "missions": ["ELIMINATION", "CAPTURE"], "fc": 2, "valeurElim": 2, "valeurCapture": 6, "milieuPrefere": {"nom": ["FORET", "MARAIS"], "bonus": 3}, "milieuNonViable": ["PYRAMIDES"], "presences": [{"des": [1, 2], "nombre": 1}, {"des": [3, 4, 5], "nombre": 2}, {"des": [6], "nombre": 3}], "notes": "Venimeux. Ne s'approche jamais des vaisseaux."}, "BAVOSUS": {"cat": "NON_SAPIENS", "type": "VELENOSI", "ref": "2/2", "missions": ["ELIMINATION", "CAPTURE"], "fc": 15, "valeurElim": 6, "valeurCapture": 20, "milieuPrefere": {"nom": ["DESERT"], "bonus": 2}, "milieuNonViable": ["FORET", "MARAIS"], "presences": [{"des": [1, 2, 3, 4], "nombre": 1}, {"des": [5, 6], "nombre": 2}], "notes": "Ne considèrent pas les équipages débarqués comme dangereux tant qu'ils n'ouvrent pas le feu. Corrosion des vaisseaux par adhérence. Inflammables au laser : débarquement inutile. Éliminés au laser : 0 point si tirage pair. Venimeux."}, "RADICALES": {"cat": "NON_SAPIENS", "type": "VELENOSI", "ref": "2/3", "missions": ["ELIMINATION", "CAPTURE"], "fc": 10, "valeurElim": 5, "valeurCapture": 15, "milieuPrefere": {"nom": ["FORET", "MARAIS"], "bonus": 8}, "milieuNonViable": ["DESERT", "GLACE"], "presences": [{"des": [1, 2, 3, 4], "nombre": 1}, {"des": [5, 6], "nombre": 2}], "notes": "Risque élevé aussi bien pour les équipages que pour les vaisseaux à terre. Éliminées au laser : 0 point si tirage pair. Venimeux."}, "SEVOLVENTES": {"cat": "NON_SAPIENS", "type": "MONSTRA", "ref": "2/4", "missions": ["ELIMINATION"], "fc": 2, "valeurElim": 5, "valeurCapture": null, "milieuPrefere": {"nom": ["GLACE"], "bonus": 1}, "milieuNonViable": ["FORET", "EAU"], "presences": [{"des": [1, 2], "nombre": 2}, {"des": [3, 4], "nombre": 4}, {"des": [5, 6], "nombre": 6}], "notes": "Le noyau récupéré rapporte d'excellents points (valeur non chiffrée dans la fiche)."}, "GIGANS": {"cat": "NON_SAPIENS", "type": "MONSTRA", "ref": "2/5", "missions": ["ELIMINATION"], "fc": 20, "valeurElim": 15, "valeurCapture": null, "milieuPrefere": {"nom": ["FORET"], "bonus": 5}, "milieuNonViable": ["DESERT", "EAU"], "presences": [{"des": [1, 2, 3, 4], "nombre": 1}, {"des": [5], "nombre": 2}, {"des": [6], "nombre": 3}], "notes": "Capture impossible. Équipages débarqués près du tronc : moitié de leurs mouvements. Prennent feu au laser (tirage impair) : débarquement inutile. Éliminés au laser : 0 point si tirage impair. Lignum récupérable."}, "PRIMITIS": {"cat": "SAPIENS", "type": "SUB_CIVILES", "ref": "2/6", "missions": ["INTIMIDATION", "COMMERCE", "RECHERCHE_SCIENTIFIQUE", "DUEL"], "fc": null, "valeurElim": null, "valeurCapture": null, "milieuPrefere": {"nom": ["VILLAGE"], "bonus": 1}, "milieuNonViable": ["EAU"], "presences": [{"des": [1, 2], "nombre": 4}, {"des": [3, 4], "nombre": 5}, {"des": [5], "nombre": 7}, {"des": [6], "nombre": 10}], "notes": "Timides ; peuvent se rebeller contre des équipages entrant dans leurs villages. Intimidation : vénération. Commerce : produits agricoles. Mission Duel : règle non détaillée dans le Guide."}, "UPOMEDI": {"cat": "SAPIENS", "type": "SUB_CIVILES", "ref": "2/7", "missions": ["INTIMIDATION", "COMMERCE"], "fc": 2, "valeurElim": null, "valeurCapture": null, "milieuPrefere": {"nom": ["GLACE", "DESERT"], "bonus": 1}, "milieuNonViable": ["FORET"], "presences": [{"des": [1, 2, 3], "nombre": 4}, {"des": [4, 5, 6], "nombre": 8}], "notes": ""}, "ALGHIDI": {"cat": "SAPIENS", "type": "CIVILES", "ref": "2/8", "missions": ["ELIMINATION", "ALLIANCE"], "fc": 5, "valeurElim": 4, "valeurCapture": null, "milieuPrefere": {"nom": ["EAU"], "bonus": 2}, "milieuNonViable": ["DESERT"], "presences": [{"des": [1, 2, 3], "nombre": 1}, {"des": [4, 5], "nombre": 2}, {"des": [6], "nombre": 3}], "notes": "Marchands = pacifiques (ils ne font pas commerce d'idées). Algues psychoréceptrices récupérables après élimination : gros avantage en points (valeur non chiffrée). Dangereux quand irrités."}, "TRONCIDI": {"cat": "SAPIENS", "type": "CIVILES", "ref": "2/9", "missions": ["ALLIANCE", "COMMERCE", "RECHERCHE_SCIENTIFIQUE"], "fc": 12, "valeurElim": null, "valeurCapture": null, "milieuPrefere": {"nom": ["PYRAMIDES"], "bonus": 4}, "milieuNonViable": ["EAU", "GLACE"], "presences": [{"des": [1, 2, 3, 4], "nombre": 1}, {"des": [5], "nombre": 2}, {"des": [6], "nombre": 3}], "notes": "Bons marchands. Un laser de puissance suffisante (au moins ZIP 3) double ses capacités perforantes contre eux (effet exact non chiffré)."}, "IPNOTICI": {"cat": "SAPIENS", "type": "CIVILES", "ref": "2/10", "missions": ["ELIMINATION", "ALLIANCE", "COMMERCE"], "fc": 5, "valeurElim": 4, "valeurCapture": null, "milieuPrefere": {"nom": ["VILLAGE"], "bonus": 2}, "milieuNonViable": ["GLACE"], "presences": [{"des": [1], "nombre": 1}, {"des": [2, 3, 4], "nombre": 2}, {"des": [5], "nombre": 3}, {"des": [6], "nombre": 4}], "notes": "Les résultats d'une attaque des Ipnotici sur le tableau B sont considérés ainsi : 1 = 2 ; 2 = 2 ; 3 = 4 ; 4 = 4 ; etc. (règle explicite, distincte du doublement Velenosi). Possibilités de désertion."}, "PSICO": {"cat": "SAPIENS", "type": "SUPER_CIVILES", "ref": "2/11", "missions": ["ALLIANCE"], "fc": 15, "valeurElim": null, "valeurCapture": null, "milieuPrefere": {"nom": ["VILLAGE"], "bonus": 5}, "milieuNonViable": ["DESERT", "GLACE"], "presences": [{"des": [1, 2, 3, 4, 5, 6], "nombre": 1}], "notes": ""}, "NORMO": {"cat": "SAPIENS", "type": "SUPER_CIVILES", "ref": "2/12", "missions": ["ALLIANCE", "RECHERCHE_SCIENTIFIQUE"], "fc": null, "valeurElim": null, "valeurCapture": null, "milieuPrefere": {"nom": ["FORET"], "bonus": 5}, "milieuNonViable": [], "presences": [{"des": [1, 2, 3, 4, 5], "nombre": 1}, {"des": [6], "nombre": 2}], "notes": "Pas de commerce possible : tout ce qu'ils désirent peut être produit directement. Recherche de bio-botanique possible."}, "ELPH": {"cat": "SAPIENS", "type": "SUB_CIVILES", "ref": "3/1", "missions": ["INTIMIDATION", "RECHERCHE_SCIENTIFIQUE"], "fc": 1, "valeurElim": null, "valeurCapture": null, "milieuPrefere": {"nom": ["FORET"], "bonus": 1}, "milieuNonViable": ["EAU"], "presences": [{"des": [1, 2, 3, 4], "nombre": 3}, {"des": [5], "nombre": 5}, {"des": [6], "nombre": 7}], "notes": "Pas de commerce : une attitude marchande est pacifique. Peuvent être intimidés."}, "NILBOG": {"cat": "SAPIENS", "type": "SUB_CIVILES", "ref": "3/2", "missions": ["RECHERCHE_SCIENTIFIQUE", "COMMERCE", "PIERRE_ROTSA"], "fc": 1, "valeurElim": null, "valeurCapture": null, "milieuPrefere": {"nom": ["PYRAMIDES"], "bonus": 3}, "milieuNonViable": [], "presences": [{"des": [1, 2, 3, 4], "nombre": 3}, {"des": [5, 6], "nombre": 6}], "notes": "Mission Pierre Rotsa : prise de la pierre sacrée en atterrissant en zone pyramides ou en déclarant s'y rendre ; points selon le nombre d'équipages envoyés et le tableau (absent). Réservée aux NILBOG pacifiques. Pas d'intimidation. Ne se répète pas."}, "TARILS": {"cat": "SAPIENS", "type": "SUB_CIVILES", "ref": "3/3", "missions": ["INTIMIDATION", "RECHERCHE_SCIENTIFIQUE"], "fc": 2, "valeurElim": null, "valeurCapture": null, "milieuPrefere": {"nom": ["DESERT"], "bonus": 1}, "milieuNonViable": [], "presences": [{"des": [1], "nombre": 1}, {"des": [2], "nombre": 2}, {"des": [3], "nombre": 3}, {"des": [4], "nombre": 4}, {"des": [5], "nombre": 5}, {"des": [6], "nombre": 6}], "notes": "Intimidation réussie : statues de vénération (valeur non chiffrée). Commerce cité dans le texte mais absent des missions : écart."}, "SKIN": {"cat": "SAPIENS", "type": "CIVILES", "ref": "3/4", "missions": ["ALLIANCE", "COMMERCE", "RECHERCHE_SCIENTIFIQUE"], "fc": 2, "valeurElim": null, "valeurCapture": null, "milieuPrefere": {"nom": ["VILLAGE"], "bonus": 3}, "milieuNonViable": ["EAU"], "presences": [{"des": [1, 2, 3, 4], "nombre": 2}, {"des": [5], "nombre": 4}, {"des": [6], "nombre": 6}], "notes": "Esprit mercantile : nombreux points possibles. Désertions possibles."}, "PELASGI": {"cat": "SAPIENS", "type": "CIVILES", "ref": "3/5", "missions": ["MARCHAND", "ALLIANCE", "RECHERCHE_SCIENTIFIQUE"], "fc": 3, "valeurElim": null, "valeurCapture": null, "milieuPrefere": {"nom": ["DESERT"], "bonus": 2}, "milieuNonViable": [], "presences": [{"des": [1, 2, 3], "nombre": 2}, {"des": [4, 5], "nombre": 4}, {"des": [6], "nombre": 10}], "notes": "Désertions possibles."}, "TULII": {"cat": "SAPIENS", "type": "CIVILES", "ref": "3/6", "missions": ["ALLIANCE", "COMMERCE", "RECHERCHE_SCIENTIFIQUE"], "fc": 4, "valeurElim": null, "valeurCapture": null, "milieuPrefere": {"nom": ["EAU"], "bonus": 2}, "milieuNonViable": ["DESERT"], "presences": [{"des": [1, 2, 3, 4], "nombre": 2}, {"des": [5], "nombre": 4}, {"des": [6], "nombre": 8}], "notes": "Ennemis naturels des KNOX. Désertions possibles."}, "NAPOS": {"cat": "SAPIENS", "type": "CIVILES", "ref": "3/7", "missions": ["COMMERCE", "ALLIANCE", "RECHERCHE_SCIENTIFIQUE"], "fc": 5, "valeurElim": null, "valeurCapture": null, "milieuPrefere": {"nom": ["FORET"], "bonus": 3}, "milieuNonViable": ["EAU"], "presences": [{"des": [1, 2, 3], "nombre": 2}, {"des": [4, 5], "nombre": 5}, {"des": [6], "nombre": 8}], "notes": "Armes inoffensives contre les vaisseaux à boucliers activés. Commerce des marchands (diamants) : gain élevé. Désertions possibles."}, "SIPCO": {"cat": "SAPIENS", "type": "SUPER_CIVILES", "ref": "3/8", "missions": ["ALLIANCE"], "fc": null, "valeurElim": null, "valeurCapture": null, "milieuPrefere": {"nom": [], "bonus": null}, "milieuNonViable": [], "presences": [{"des": [1, 2, 3, 4, 5], "nombre": 1}, {"des": [6], "nombre": 2}], "notes": "Pas de commerce : tout résultat commercial est pacifique. Tableau absent de l'extraction."}, "ATTLERS": {"cat": "SAPIENS", "type": "SUPER_CIVILES", "ref": "3/9", "missions": ["ALLIANCE"], "fc": null, "valeurElim": null, "valeurCapture": null, "milieuPrefere": {"nom": [], "bonus": null}, "milieuNonViable": [], "presences": [{"des": [1, 2, 3, 4, 5, 6], "nombre": 1}], "notes": "Marchands = hostiles. Attaques psychiques de force non évaluable initialement."}, "CRONOS": {"cat": "SAPIENS", "type": "SUPER_CIVILES", "ref": "3/10", "missions": ["ALLIANCE"], "fc": null, "valeurElim": null, "valeurCapture": null, "milieuPrefere": {"nom": [], "bonus": null}, "milieuNonViable": [], "presences": [{"des": [1, 2, 3, 4, 5, 6], "nombre": 1}], "notes": "Arme sphère-foudre : pertes et dégâts subis multipliés jusqu'à 6 fois (tirage S.C.). Pas de commerce : attitude marchande = pacifique."}, "ASPIS": {"cat": "NON_SAPIENS", "type": "VELENOSI", "ref": "3/11", "missions": ["ELIMINATION", "CAPTURE"], "fc": 8, "valeurElim": 4, "valeurCapture": 12, "milieuPrefere": {"nom": ["DESERT"], "bonus": 2}, "milieuNonViable": ["VILLAGE"], "presences": [{"des": [1, 2, 3, 4, 5], "nombre": 1}, {"des": [6], "nombre": 2}], "notes": "Venimeux. Ne peuvent pas attaquer les vaisseaux qui ont atterri (ou sans conséquence)."}, "SCORPIO": {"cat": "NON_SAPIENS", "type": "VELENOSI", "ref": "3/12", "missions": ["ELIMINATION", "CAPTURE"], "fc": 12, "valeurElim": 6, "valeurCapture": 18, "milieuPrefere": {"nom": ["DESERT"], "bonus": 2}, "milieuNonViable": ["GLACE"], "presences": [{"des": [1, 2, 3, 4], "nombre": 1}, {"des": [5], "nombre": 2}, {"des": [6], "nombre": 3}], "notes": "Venimeux. Capture rare : promotions immédiates possibles. Il faut débarquer assez d'équipages en prévoyant des pertes."}, "MANTA": {"cat": "NON_SAPIENS", "type": "VELENOSI", "ref": "3/13", "missions": ["ELIMINATION", "CAPTURE"], "fc": 2, "valeurElim": 3, "valeurCapture": 7, "milieuPrefere": {"nom": ["FORET"], "bonus": 1}, "milieuNonViable": ["EAU"], "presences": [{"des": [1, 2, 3, 4], "nombre": 1}, {"des": [5, 6], "nombre": 2}], "notes": "Venimeux. Aiguilles empoisonnées lancées par la queue : contrôler son caractère au débarquement pour une capture. Fourrure imperméable récupérable."}, "HYDRA": {"cat": "NON_SAPIENS", "type": "MONSTRA", "ref": "3/14", "missions": ["ELIMINATION", "CAPTURE"], "fc": 3, "valeurElim": 4, "valeurCapture": 10, "milieuPrefere": {"nom": ["DESERT"], "bonus": 1}, "milieuNonViable": ["EAU"], "presences": [{"des": [1, 2], "nombre": 1}, {"des": [3, 4, 5], "nombre": 2}, {"des": [6], "nombre": 4}], "notes": ""}, "TYRANNOSAURUS": {"cat": "NON_SAPIENS", "type": "MONSTRA", "ref": "3/15", "missions": ["ELIMINATION", "CAPTURE"], "fc": 10, "valeurElim": 8, "valeurCapture": 14, "milieuPrefere": {"nom": ["MARAIS"], "bonus": 3}, "milieuNonViable": ["GLACE"], "presences": [{"des": [1], "nombre": 1}, {"des": [2, 3, 4, 5], "nombre": 2}, {"des": [6], "nombre": 3}], "notes": "Réaction selon la situation : indifférence (bonnes chances de capture, zoos de Vénus) ou attaque furieuse, surtout en marais (œufs)."}, "ANOPHELES": {"cat": "NON_SAPIENS", "type": "MONSTRA", "ref": null, "missions": ["ELIMINATION"], "fc": 1, "valeurElim": 3, "valeurCapture": null, "milieuPrefere": {"nom": ["MARAIS"], "bonus": 1}, "milieuNonViable": ["PYRAMIDES"], "presences": [{"des": [1, 2, 3], "nombre": 5}, {"des": [4, 5, 6], "nombre": 10}], "notes": "Moustiques géants, morsure non venimeuse mais attaque en nuée mortelle. Ne peuvent pas être capturés (milieu non recréable) : pas de mission de capture. N'attaquent jamais les vaisseaux (assimilés aux pierres pyramidales toxiques)."}, "FERA": {"cat": "NON_SAPIENS", "type": "MONSTRA", "ref": null, "missions": ["ELIMINATION"], "fc": 4, "valeurElim": 3, "valeurCapture": null, "milieuPrefere": {"nom": ["GLACE"], "bonus": 4}, "milieuNonViable": ["DESERT"], "presences": [{"des": [1, 2, 3, 4, 5], "nombre": 1}, {"des": [6], "nombre": 3}], "notes": "Chasse réservée aux U.C. de légionnaires (taxes lourdes pour les autres). Pas de survie en captivité : pas de mission de capture."}, "MINOS": {"cat": "NON_SAPIENS", "type": "MONSTRA", "ref": null, "missions": ["ELIMINATION", "CAPTURE"], "fc": 2, "valeurElim": 5, "valeurCapture": 11, "milieuPrefere": {"nom": ["PYRAMIDES"], "bonus": 4}, "milieuNonViable": ["MARAIS"], "presences": [{"des": [1], "nombre": 1}, {"des": [2, 3], "nombre": 3}, {"des": [4, 5], "nombre": 5}, {"des": [6], "nombre": 7}], "notes": "Bipède rapide. Ses organes visuels (yeux rétractables à vibrations) sont la cible des légionnaires : bio-cellules photoélectriques. Capture intéressante pour les moines aveugles d'ALITOR."}};
+const ALIEN_FC = 5;
+const RACES = {"AMOEBA": {"cat": "NON_SAPIENS", "type": "MONSTRA", "ref": "1/1", "missions": ["ELIMINATION"], "fc": null, "valeurElim": null, "valeurCapture": null, "milieuPrefere": {"nom": ["DESERT"], "bonus": 2}, "milieuNonViable": ["EAU"], "presences": [{"des": [1, 2, 3], "nombre": 1}, {"des": [4, 5], "nombre": 2}, {"des": [6], "nombre": 4}], "notes": "Le feu peut diviser sa force par 2 ou la priver de son principe vital ; une élimination excessive la rend inutilisable."}, "CERBERUS": {"cat": "NON_SAPIENS", "type": "MONSTRA", "ref": "1/2", "missions": ["ELIMINATION", "CAPTURE"], "fc": null, "valeurElim": null, "valeurCapture": null, "milieuPrefere": {"nom": ["GLACE"], "bonus": 4}, "milieuNonViable": ["MARAIS"], "presences": [{"des": [1], "nombre": 1}, {"des": [2, 3], "nombre": 2}, {"des": [4, 5], "nombre": 3}, {"des": [6], "nombre": 4}], "notes": "Attaque en principe l'objectif le plus proche."}, "SPHAERAE": {"cat": "NON_SAPIENS", "type": "MONSTRA", "ref": "1/4", "missions": ["ELIMINATION"], "fc": null, "valeurElim": null, "valeurCapture": null, "milieuPrefere": {"nom": ["DESERT", "GLACE"], "bonus": null}, "milieuNonViable": ["EAU", "PYRAMIDES"], "presences": [{"des": [1, 2], "nombre": 6}, {"des": [3, 4, 5], "nombre": 10}, {"des": [6], "nombre": 20}], "notes": "Attaquent directement le vaisseau."}, "LITOFAGUS": {"cat": "NON_SAPIENS", "type": "MONSTRA", "ref": "1/3", "missions": ["ELIMINATION"], "fc": 5, "valeurElim": null, "valeurCapture": null, "milieuPrefere": {"nom": ["PYRAMIDES"], "bonus": 1}, "milieuNonViable": ["FORET", "EAU", "MARAIS"], "presences": [{"des": [1, 2, 3, 4], "nombre": 2}, {"des": [5], "nombre": 4}, {"des": [6], "nombre": 6}], "notes": "Peut détruire les combinaisons."}, "NUBIS_ARENAE": {"cat": "NON_SAPIENS", "type": "MONSTRA", "ref": "1/5", "missions": ["ELIMINATION"], "fc": null, "valeurElim": 6, "valeurCapture": null, "milieuPrefere": {"nom": ["DESERT"], "bonus": null}, "milieuNonViable": ["EAU", "FORET"], "presences": [{"des": [1, 2], "nombre": 1}, {"des": [3, 4], "nombre": 2}, {"des": [5, 6], "nombre": 3}], "notes": "Invisibles au radar."}, "SUBTERRANEI": {"cat": "NON_SAPIENS", "type": "NON_VISIBLE", "ref": "1/6", "missions": ["ELIMINATION", "CAPTURE"], "fc": 8, "valeurElim": 3, "valeurCapture": 16, "milieuPrefere": {"nom": ["MARAIS"], "bonus": 2}, "milieuNonViable": ["EAU", "GLACE"], "presences": [{"des": [1, 2], "nombre": 1}, {"des": [3, 4, 5], "nombre": 2}, {"des": [6], "nombre": 3}], "notes": "Invisibles."}, "AERIFORMI": {"cat": "NON_SAPIENS", "type": "NON_VISIBLE", "ref": "1/7", "missions": ["ELIMINATION"], "fc": 2, "valeurElim": 5, "valeurCapture": null, "milieuPrefere": {"nom": ["FORET"], "bonus": 3}, "milieuNonViable": ["VILLAGE", "EAU"], "presences": [{"des": [1, 2], "nombre": 1}, {"des": [3], "nombre": 2}, {"des": [4], "nombre": 3}, {"des": [5, 6], "nombre": 5}], "notes": "Très dangereux."}, "MIMESIS": {"cat": "NON_SAPIENS", "type": "NON_VISIBLE", "ref": "1/8", "missions": ["ELIMINATION"], "fc": 6, "valeurElim": 5, "valeurCapture": null, "milieuPrefere": {"nom": ["GLACE", "DESERT"], "bonus": 1}, "milieuNonViable": ["FORET"], "presences": [{"des": [1, 2, 3, 4], "nombre": 1}, {"des": [5, 6], "nombre": 2}], "notes": "Invisibles."}, "LIANA_NIGRA": {"cat": "NON_SAPIENS", "type": "VELENOSI", "ref": "2/1", "missions": ["ELIMINATION", "CAPTURE"], "fc": 2, "valeurElim": 2, "valeurCapture": 6, "milieuPrefere": {"nom": ["FORET", "MARAIS"], "bonus": 3}, "milieuNonViable": ["PYRAMIDES"], "presences": [{"des": [1, 2], "nombre": 1}, {"des": [3, 4, 5], "nombre": 2}, {"des": [6], "nombre": 3}], "notes": "Venimeux."}, "BAVOSUS": {"cat": "NON_SAPIENS", "type": "VELENOSI", "ref": "2/2", "missions": ["ELIMINATION", "CAPTURE"], "fc": 15, "valeurElim": 6, "valeurCapture": 20, "milieuPrefere": {"nom": ["DESERT"], "bonus": 2}, "milieuNonViable": ["FORET", "MARAIS"], "presences": [{"des": [1, 2, 3, 4], "nombre": 1}, {"des": [5, 6], "nombre": 2}], "notes": "Venimeux."}, "RADICALES": {"cat": "NON_SAPIENS", "type": "VELENOSI", "ref": "2/3", "missions": ["ELIMINATION", "CAPTURE"], "fc": 10, "valeurElim": 5, "valeurCapture": 15, "milieuPrefere": {"nom": ["FORET", "MARAIS"], "bonus": 8}, "milieuNonViable": ["DESERT", "GLACE"], "presences": [{"des": [1, 2, 3, 4], "nombre": 1}, {"des": [5, 6], "nombre": 2}], "notes": "Venimeux."}, "SEVOLVENTES": {"cat": "NON_SAPIENS", "type": "MONSTRA", "ref": "2/4", "missions": ["ELIMINATION"], "fc": 2, "valeurElim": 5, "valeurCapture": null, "milieuPrefere": {"nom": ["GLACE"], "bonus": 1}, "milieuNonViable": ["FORET", "EAU"], "presences": [{"des": [1, 2], "nombre": 2}, {"des": [3, 4], "nombre": 4}, {"des": [5, 6], "nombre": 6}], "notes": "Troncs roulants."}, "GIGANS": {"cat": "NON_SAPIENS", "type": "MONSTRA", "ref": "2/5", "missions": ["ELIMINATION"], "fc": 20, "valeurElim": 15, "valeurCapture": null, "milieuPrefere": {"nom": ["FORET"], "bonus": 5}, "milieuNonViable": ["DESERT", "EAU"], "presences": [{"des": [1, 2, 3, 4], "nombre": 1}, {"des": [5], "nombre": 2}, {"des": [6], "nombre": 3}], "notes": "Chênes gigantesques."}, "PRIMITIS": {"cat": "SAPIENS", "type": "SUB_CIVILES", "ref": "2/6", "missions": ["INTIMIDATION", "COMMERCE", "RECHERCHE_SCIENTIFIQUE", "DUEL"], "fc": null, "valeurElim": null, "valeurCapture": null, "milieuPrefere": {"nom": ["VILLAGE"], "bonus": 1}, "milieuNonViable": ["EAU"], "presences": [{"des": [1, 2], "nombre": 4}, {"des": [3, 4], "nombre": 5}, {"des": [5], "nombre": 7}, {"des": [6], "nombre": 10}], "notes": "Timides."}, "UPOMEDI": {"cat": "SAPIENS", "type": "SUB_CIVILES", "ref": "2/7", "missions": ["INTIMIDATION", "COMMERCE"], "fc": 2, "valeurElim": null, "valeurCapture": null, "milieuPrefere": {"nom": ["GLACE", "DESERT"], "bonus": 1}, "milieuNonViable": ["FORET"], "presences": [{"des": [1, 2, 3], "nombre": 4}, {"des": [4, 5, 6], "nombre": 8}], "notes": ""}, "ALGHIDI": {"cat": "SAPIENS", "type": "CIVILES", "ref": "2/8", "missions": ["ELIMINATION", "ALLIANCE"], "fc": 5, "valeurElim": 4, "valeurCapture": null, "milieuPrefere": {"nom": ["EAU"], "bonus": 2}, "milieuNonViable": ["DESERT"], "presences": [{"des": [1, 2, 3], "nombre": 1}, {"des": [4, 5], "nombre": 2}, {"des": [6], "nombre": 3}], "notes": "Philosophes."}, "TRONCIDI": {"cat": "SAPIENS", "type": "CIVILES", "ref": "2/9", "missions": ["ALLIANCE", "COMMERCE", "RECHERCHE_SCIENTIFIQUE"], "fc": 12, "valeurElim": null, "valeurCapture": null, "milieuPrefere": {"nom": ["PYRAMIDES"], "bonus": 4}, "milieuNonViable": ["EAU", "GLACE"], "presences": [{"des": [1, 2, 3, 4], "nombre": 1}, {"des": [5], "nombre": 2}, {"des": [6], "nombre": 3}], "notes": "Bons marchands."}, "IPNOTICI": {"cat": "SAPIENS", "type": "CIVILES", "ref": "2/10", "missions": ["ELIMINATION", "ALLIANCE", "COMMERCE"], "fc": 5, "valeurElim": 4, "valeurCapture": null, "milieuPrefere": {"nom": ["VILLAGE"], "bonus": 2}, "milieuNonViable": ["GLACE"], "presences": [{"des": [1], "nombre": 1}, {"des": [2, 3, 4], "nombre": 2}, {"des": [5], "nombre": 3}, {"des": [6], "nombre": 4}], "notes": "Hypnotiseurs."}, "PSICO": {"cat": "SAPIENS", "type": "SUPER_CIVILES", "ref": "2/11", "missions": ["ALLIANCE"], "fc": 15, "valeurElim": null, "valeurCapture": null, "milieuPrefere": {"nom": ["VILLAGE"], "bonus": 5}, "milieuNonViable": ["DESERT", "GLACE"], "presences": [{"des": [1, 2, 3, 4, 5, 6], "nombre": 1}], "notes": ""}, "NORMO": {"cat": "SAPIENS", "type": "SUPER_CIVILES", "ref": "2/12", "missions": ["ALLIANCE", "RECHERCHE_SCIENTIFIQUE"], "fc": null, "valeurElim": null, "valeurCapture": null, "milieuPrefere": {"nom": ["FORET"], "bonus": 5}, "milieuNonViable": [], "presences": [{"des": [1, 2, 3, 4, 5], "nombre": 1}, {"des": [6], "nombre": 2}], "notes": "Création mentale."}, "ELPH": {"cat": "SAPIENS", "type": "SUB_CIVILES", "ref": "3/1", "missions": ["INTIMIDATION", "RECHERCHE_SCIENTIFIQUE"], "fc": 1, "valeurElim": null, "valeurCapture": null, "milieuPrefere": {"nom": ["FORET"], "bonus": 1}, "milieuNonViable": ["EAU"], "presences": [{"des": [1, 2, 3, 4], "nombre": 3}, {"des": [5], "nombre": 5}, {"des": [6], "nombre": 7}], "notes": "Petits archers."}, "NILBOG": {"cat": "SAPIENS", "type": "SUB_CIVILES", "ref": "3/2", "missions": ["RECHERCHE_SCIENTIFIQUE", "COMMERCE", "PIERRE_ROTSA"], "fc": 1, "valeurElim": null, "valeurCapture": null, "milieuPrefere": {"nom": ["PYRAMIDES"], "bonus": 3}, "milieuNonViable": [], "presences": [{"des": [1, 2, 3, 4], "nombre": 3}, {"des": [5, 6], "nombre": 6}], "notes": "Pierre sacrée Rotsa."}, "TARILS": {"cat": "SAPIENS", "type": "SUB_CIVILES", "ref": "3/3", "missions": ["INTIMIDATION", "RECHERCHE_SCIENTIFIQUE"], "fc": 2, "valeurElim": null, "valeurCapture": null, "milieuPrefere": {"nom": ["DESERT"], "bonus": 1}, "milieuNonViable": [], "presences": [{"des": [1], "nombre": 1}, {"des": [2], "nombre": 2}, {"des": [3], "nombre": 3}, {"des": [4], "nombre": 4}, {"des": [5], "nombre": 5}, {"des": [6], "nombre": 6}], "notes": "Statues de vénération."}, "SKIN": {"cat": "SAPIENS", "type": "CIVILES", "ref": "3/4", "missions": ["ALLIANCE", "COMMERCE", "RECHERCHE_SCIENTIFIQUE"], "fc": 2, "valeurElim": null, "valeurCapture": null, "milieuPrefere": {"nom": ["VILLAGE"], "bonus": 3}, "milieuNonViable": ["EAU"], "presences": [{"des": [1, 2, 3, 4], "nombre": 2}, {"des": [5], "nombre": 4}, {"des": [6], "nombre": 6}], "notes": "Guerriers du ciel."}, "PELASGI": {"cat": "SAPIENS", "type": "CIVILES", "ref": "3/5", "missions": ["MARCHAND", "ALLIANCE", "RECHERCHE_SCIENTIFIQUE"], "fc": 3, "valeurElim": null, "valeurCapture": null, "milieuPrefere": {"nom": ["DESERT"], "bonus": 2}, "milieuNonViable": [], "presences": [{"des": [1, 2, 3], "nombre": 2}, {"des": [4, 5], "nombre": 4}, {"des": [6], "nombre": 10}], "notes": "Bipèdes droits."}, "TULII": {"cat": "SAPIENS", "type": "CIVILES", "ref": "3/6", "missions": ["ALLIANCE", "COMMERCE", "RECHERCHE_SCIENTIFIQUE"], "fc": 4, "valeurElim": null, "valeurCapture": null, "milieuPrefere": {"nom": ["EAU"], "bonus": 2}, "milieuNonViable": ["DESERT"], "presences": [{"des": [1, 2, 3, 4], "nombre": 2}, {"des": [5], "nombre": 4}, {"des": [6], "nombre": 8}], "notes": "Ennemis des Knox."}, "NAPOS": {"cat": "SAPIENS", "type": "CIVILES", "ref": "3/7", "missions": ["COMMERCE", "ALLIANCE", "RECHERCHE_SCIENTIFIQUE"], "fc": 5, "valeurElim": null, "valeurCapture": null, "milieuPrefere": {"nom": ["FORET"], "bonus": 3}, "milieuNonViable": ["EAU"], "presences": [{"des": [1, 2, 3], "nombre": 2}, {"des": [4, 5], "nombre": 5}, {"des": [6], "nombre": 8}], "notes": "Diamants."}, "SIPCO": {"cat": "SAPIENS", "type": "SUPER_CIVILES", "ref": "3/8", "missions": ["ALLIANCE"], "fc": null, "valeurElim": null, "valeurCapture": null, "milieuPrefere": {"nom": [], "bonus": null}, "milieuNonViable": [], "presences": [{"des": [1, 2, 3, 4, 5], "nombre": 1}, {"des": [6], "nombre": 2}], "notes": "Tête dans une bulle."}, "ATTLERS": {"cat": "SAPIENS", "type": "SUPER_CIVILES", "ref": "3/9", "missions": ["ALLIANCE"], "fc": null, "valeurElim": null, "valeurCapture": null, "milieuPrefere": {"nom": [], "bonus": null}, "milieuNonViable": [], "presences": [{"des": [1, 2, 3, 4, 5, 6], "nombre": 1}], "notes": "Armes psychiques."}, "CRONOS": {"cat": "SAPIENS", "type": "SUPER_CIVILES", "ref": "3/10", "missions": ["ALLIANCE"], "fc": null, "valeurElim": null, "valeurCapture": null, "milieuPrefere": {"nom": [], "bonus": null}, "milieuNonViable": [], "presences": [{"des": [1, 2, 3, 4, 5, 6], "nombre": 1}], "notes": "Sphère-foudre."}, "ASPIS": {"cat": "NON_SAPIENS", "type": "VELENOSI", "ref": "3/11", "missions": ["ELIMINATION", "CAPTURE"], "fc": 8, "valeurElim": 4, "valeurCapture": 12, "milieuPrefere": {"nom": ["DESERT"], "bonus": 2}, "milieuNonViable": ["VILLAGE"], "presences": [{"des": [1, 2, 3, 4, 5], "nombre": 1}, {"des": [6], "nombre": 2}], "notes": "Tête double."}, "SCORPIO": {"cat": "NON_SAPIENS", "type": "VELENOSI", "ref": "3/12", "missions": ["ELIMINATION", "CAPTURE"], "fc": 12, "valeurElim": 6, "valeurCapture": 18, "milieuPrefere": {"nom": ["DESERT"], "bonus": 2}, "milieuNonViable": ["GLACE"], "presences": [{"des": [1, 2, 3, 4], "nombre": 1}, {"des": [5], "nombre": 2}, {"des": [6], "nombre": 3}], "notes": "Queue venimeuse."}, "MANTA": {"cat": "NON_SAPIENS", "type": "VELENOSI", "ref": "3/13", "missions": ["ELIMINATION", "CAPTURE"], "fc": 2, "valeurElim": 3, "valeurCapture": 7, "milieuPrefere": {"nom": ["FORET"], "bonus": 1}, "milieuNonViable": ["EAU"], "presences": [{"des": [1, 2, 3, 4], "nombre": 1}, {"des": [5, 6], "nombre": 2}], "notes": "Aiguilles empoisonnées."}, "HYDRA": {"cat": "NON_SAPIENS", "type": "MONSTRA", "ref": "3/14", "missions": ["ELIMINATION", "CAPTURE"], "fc": 3, "valeurElim": 4, "valeurCapture": 10, "milieuPrefere": {"nom": ["DESERT"], "bonus": 1}, "milieuNonViable": ["EAU"], "presences": [{"des": [1, 2], "nombre": 1}, {"des": [3, 4, 5], "nombre": 2}, {"des": [6], "nombre": 4}], "notes": "Multiples têtes."}, "TYRANNOSAURUS": {"cat": "NON_SAPIENS", "type": "MONSTRA", "ref": "3/15", "missions": ["ELIMINATION", "CAPTURE"], "fc": 10, "valeurElim": 8, "valeurCapture": 14, "milieuPrefere": {"nom": ["MARAIS"], "bonus": 3}, "milieuNonViable": ["GLACE"], "presences": [{"des": [1], "nombre": 1}, {"des": [2, 3, 4, 5], "nombre": 2}, {"des": [6], "nombre": 3}], "notes": "Seigneurs préhistoriques."}, "ANOPHELES": {"cat": "NON_SAPIENS", "type": "MONSTRA", "ref": null, "missions": ["ELIMINATION"], "fc": 1, "valeurElim": 3, "valeurCapture": null, "milieuPrefere": {"nom": ["MARAIS"], "bonus": 1}, "milieuNonViable": ["PYRAMIDES"], "presences": [{"des": [1, 2, 3], "nombre": 5}, {"des": [4, 5, 6], "nombre": 10}], "notes": "Moustiques géants."}, "FERA": {"cat": "NON_SAPIENS", "type": "MONSTRA", "ref": null, "missions": ["ELIMINATION"], "fc": 4, "valeurElim": 3, "valeurCapture": null, "milieuPrefere": {"nom": ["GLACE"], "bonus": 4}, "milieuNonViable": ["DESERT"], "presences": [{"des": [1, 2, 3, 4, 5], "nombre": 1}, {"des": [6], "nombre": 3}], "notes": "Chasse réservée."}, "MINOS": {"cat": "NON_SAPIENS", "type": "MONSTRA", "ref": null, "missions": ["ELIMINATION", "CAPTURE"], "fc": 2, "valeurElim": 5, "valeurCapture": 11, "milieuPrefere": {"nom": ["PYRAMIDES"], "bonus": 4}, "milieuNonViable": ["MARAIS"], "presences": [{"des": [1], "nombre": 1}, {"des": [2, 3], "nombre": 3}, {"des": [4, 5], "nombre": 5}, {"des": [6], "nombre": 7}], "notes": "Bipède rapide."}};
 const NIVEAU_TECH = {"AMOEBA": null, "CERBERUS": null, "SPHAERAE": null, "LITOFAGUS": null, "NUBIS_ARENAE": null, "SUBTERRANEI": null, "AERIFORMI": null, "MIMESIS": null, "LIANA_NIGRA": null, "BAVOSUS": null, "RADICALES": null, "SEVOLVENTES": null, "GIGANS": null, "PRIMITIS": 8, "UPOMEDI": null, "ALGHIDI": null, "TRONCIDI": 7, "IPNOTICI": null, "PSICO": null, "NORMO": 5, "ELPH": 9, "NILBOG": 9, "TARILS": 8, "SKIN": 9, "PELASGI": null, "TULII": 4, "NAPOS": 9, "SIPCO": null, "ATTLERS": null, "CRONOS": null, "ASPIS": null, "SCORPIO": null, "MANTA": null, "HYDRA": null, "TYRANNOSAURUS": null, "ANOPHELES": null, "FERA": null, "MINOS": null};
 for(const k in RACES) RACES[k].niveauTech = NIVEAU_TECH[k];
 
 // ==========================================
-// GUIDE DES RENCONTRES : arbre d'information (Fiche Information S.C.)
+// GUIDE DES RENCONTRES : arbre d'information
 // ==========================================
 const LETTERS_L1 = {1:'A',2:'B',3:'C',4:'D',5:'E',6:'F',7:'G',8:'H'};
 const LETTER_NAME = {A:'A · Tellus',B:'B · Sine Atmosphaera',C:'C · Mercurius',D:'D · Mars',E:'E · Mars',F:'F · Vénus',G:'G · Jupiter',H:'H · Jupiter'};
@@ -162,16 +161,33 @@ let state = {
   basePos:{x:0,y:0,z:1}, position:{x:0,y:0,z:1},
   route:{segments:[],parsecsInput:1,radarsActive:2},
   planets:[], currentPlanet:null, computersUsedThisTurn:0, observablePlanets:[],
-  shieldsOn:true, shieldsLocked:false, hullHitsThisTurn:0,
+  shieldsOn:true, shieldsLocked:false, hullHitsThisTurn:0, lastHitWasHull:false,
   personality:0, risks:null, savant:0,
   menGround:0, crewGround:0, landedTurns:0, menLost:0, mission:null, missionResult:null,
   currentAliens:0, alienWounded:0, missionUsed:false,
-  debugLogs:[], travelHistory:[]
+  debugLogs:[], travelHistory:[], specialist:{type:'aucun', value:1}
 };
 
 // ==========================================
-// UTILITAIRES
+// UTILITAIRES DE COMBAT AU SOL (Radioactivité & Règles)
 // ==========================================
+function crewAttackFC(){
+  const p = state.currentPlanet;
+  const rad = (p && p.chain && p.chain.rad) ? p.chain.rad : '0';
+  let perCrew = 3;
+  if(rad.includes('α') || rad.includes('a')) perCrew = 2;
+  else if(rad.includes('β') || rad.includes('B') || rad.includes('beta')) perCrew = 1;
+  
+  const crews = state.crewGround;
+  let base = crews * perCrew;
+  const forme = (p && p.chain && p.chain.forme) ? p.chain.forme : null;
+  let fcModules = 0;
+  if(state.ship.mod_zip3>0) fcModules += state.ship.mod_zip3 * 5;
+  if(state.ship.mod_ho12>0) fcModules += state.ship.mod_ho12 * ({ANI:6,VEG:4,MIN:3}[forme] || 3);
+  if(state.ship.mod_sil4>0) fcModules += state.ship.mod_sil4 * ((forme === 'MIN') ? 6 : 3);
+  return base + fcModules;
+}
+
 const cls = () => SHIPS[state.shipClass];
 const d6 = () => Math.floor(Math.random()*6)+1;
 const d10 = () => Math.floor(Math.random()*10)+1;
@@ -206,7 +222,7 @@ function log(sender,text){
 function logCombat(text){ const cl=document.getElementById('combat-log'); cl.style.display='block'; cl.innerHTML=text; }
 
 // ==========================================
-// GÉNÉRATION DE LA GALAXIE (38 x 25 par niveau, une planète par parsec)
+// GÉNÉRATION DE LA GALAXIE
 // ==========================================
 function randomCell(z, minPlanetDist, taken){
   for(let t=0;t<5000;t++){
@@ -278,7 +294,7 @@ function startGame(){
 }
 
 // ==========================================
-// NIVEAU ET PERSONNALITÉ (fixés au départ)
+// NIVEAU ET PERSONNALITÉ
 // ==========================================
 function setLevel(v){
   if(state.turn>1){ alert("Le niveau est fixé au lancement de l'exploration."); document.getElementById('level-select').value=state.level; return; }
@@ -294,7 +310,7 @@ function setPersonality(v){
 }
 
 // ==========================================
-// VAISSEAU
+// VAISSEAU & DÉGÂTS (Coque consecutive rule)
 // ==========================================
 function shipDefence(){ return state.shieldsOn ? state.ship.shields*5 : 2; }
 function updateShip(item,change){
@@ -359,9 +375,6 @@ function renderShip(){
   document.getElementById('display-shields').innerText=`Boucliers : ${state.shieldsOn?'Activés':'Désactivés'}`;
 }
 
-// ==========================================
-// BOUCLIERS (fixés pour le tour)
-// ==========================================
 function setShields(on){
   if(state.shieldsLocked){ alert('Les boucliers sont fixés pour ce tour.'); document.getElementById('check-shields').checked=state.shieldsOn; return; }
   state.shieldsOn=on;
@@ -370,26 +383,28 @@ function setShields(on){
   renderShip();
 }
 
-// ==========================================
-// DÉGÂTS AU VAISSEAU (tableau C, coque)
-// ==========================================
+// Dégâts Tableau C avec noms complets et règle de coque successive (Art 5/0)
 function hitShip(n){
+  const compNames = {bou:'Bouclier (SOK 9)', las:'Laser (ZIP 11)', rad:'Radar (VISUS)', com:'Ordinateur (MATER)', res:'Réservoir (J.NA)', coque:'coque'};
   for(let i=0;i<n;i++){
     const r=d6(), el=TAB_C[r];
-    recordOp('C','Dégât vaisseau',{dé:r},el,'');
-    addDebugLog(`Tableau C : dé ${r} → ${el}`);
+    const fullName = compNames[el] || el;
+    recordOp('C','Dégât vaisseau',{dé:r},fullName,'');
+    addDebugLog(`Tableau C : dé ${r} → ${fullName}`);
     if(el==='coque'){
-      state.hullHitsThisTurn++;
-      if(state.hullHitsThisTurn>=2){ shipDestroyed(); return; }
-      log('SPACE COMPUTER','Coque touchée : sans effet (premier impact du tour).');
+      if(state.lastHitWasHull){ shipDestroyed(); return; }
+      state.lastHitWasHull = true;
+      log('SPACE COMPUTER','Coque touchée : sans effet (premier impact successif).');
       continue;
     }
+    state.lastHitWasHull = false;
     const key={bou:'shields',las:'lasers',rad:'radars',com:'computers',res:'tanks'}[el];
-    if(state.ship[key]>0){ state.ship[key]--; log('SPACE COMPUTER',`Dégât : un élément « ${el} » est détruit.`); }
-    else log('SPACE COMPUTER',`Dégât sur « ${el} » absent du vaisseau : ignoré.`);
+    if(state.ship[key]>0){ state.ship[key]--; log('SPACE COMPUTER',`Dégât : un élément « ${fullName} » est détruit.`); }
+    else log('SPACE COMPUTER',`Dégât sur « ${fullName} » absent du vaisseau : ignoré.`);
   }
   renderShip(); updateRouteLimits();
 }
+
 function shipDestroyed(){
   const order=['FROMBOLA','GLADIUM','SPATHA','HASTA'];
   const idx=order.indexOf(state.shipClass);
@@ -408,7 +423,7 @@ function shipDestroyed(){
 }
 
 // ==========================================
-// ROUTE
+// ROUTE & DÉPLACEMENTS
 // ==========================================
 function getMaxThrust(){ return state.ship.tanks*cls().ppr; }
 function getCurrentTotal(){ return state.route.segments.reduce((s,g)=>s+g.parsecs,0); }
@@ -451,9 +466,6 @@ function resetRoute(){
   renderSegments();
 }
 
-// ==========================================
-// RISQUES (AVANCÉ)
-// ==========================================
 function blackHoleHit(path){
   if(!state.risks||!state.risks.blackHole) return 0;
   const bh=state.risks.blackHole;
@@ -476,7 +488,6 @@ function riskStop(path){
   }
   return null;
 }
-// Distorsion nullius : direction et distance tirées (R-SC p.4 A c)
 function distortionRelocate(from){
   const dirs=['N','E','S','O','HAUT','BAS'];
   const dir=dirs[d6()-1], dist=d6();
@@ -492,12 +503,9 @@ function distortionRelocate(from){
   return p;
 }
 
-// ==========================================
-// EXÉCUTION DE LA ROUTE
-// ==========================================
 function executeRoute(){
   if(state.route.segments.length===0) return;
-  state.shieldsLocked=true; state.hullHitsThisTurn=0;
+  state.shieldsLocked=true; state.hullHitsThisTurn=0; state.lastHitWasHull=false;
   state.isInFlight=true; renderShip();
   const isLanding=document.getElementById('check-landing').checked;
   const radar=state.route.radarsActive;
@@ -506,7 +514,6 @@ function executeRoute(){
   log('OFFICIER COMMANDANT',`Tour ${state.turn} — Ma route : ${routeStr}. ${radar} radar(s). ${isLanding?"(route d'atterrissage)":''}`);
   addDebugLog(`>>> ROUTE : ${routeStr} (radars ${radar}, atterrissage ${isLanding})`);
 
-  // Construction du tracé, bornes de la Tabula respectées
   let cur={...state.position}; const path=[]; let boundaryStop=false;
   for(const seg of state.route.segments){
     if(seg.dir==='HAUT'||seg.dir==='BAS'){
@@ -535,7 +542,6 @@ function executeRoute(){
     const hit=state.planets.find(q=>q.x===p.x&&q.y===p.y&&q.z===p.z&&q.id!==0);
     if(hit){ if(isLanding&&hit===targetPlanet&&i===path.length-1) continue; collisionIndex=i; collisionPlanet=hit; break; }
   }
-  // Risques (AVANCÉ)
   let riskHit=null;
   if(state.level==='AVANCE'){
     const rs=riskStop(path);
@@ -547,15 +553,12 @@ function executeRoute(){
     if(collisionPlanet && radar===0){ maxSteps=collisionIndex+1; atterrissageForce=true; }
     else { maxSteps=Math.max(0,collisionIndex-radar+1); routeInterrompue=true; if(!collisionPlanet) maxSteps=collisionIndex+1; }
   }
-  // Traces de debug
   let tp={...state.position};
   for(let i=0;i<maxSteps;i++){ const np=path[i]; if(tp.z===np.z&&!np.isJump) state.travelHistory.push({x1:tp.x,y1:tp.y,x2:np.x,y2:np.y,z:tp.z}); tp=np; }
 
-  // Effets des risques sur le tracé
   let risksDamage=0;
   if(state.level==='AVANCE') risksDamage=blackHoleHit(path.slice(0,maxSteps));
 
-  // Radars et découvertes
   const best={}; state.computersUsedThisTurn=0; state.observablePlanets=[];
   let stepCount=0;
   for(let i=0;i<maxSteps;i++){
@@ -572,7 +575,6 @@ function executeRoute(){
       }
     });
   }
-  // Position finale
   let finalPos = maxSteps>0 ? {...path[maxSteps-1]} : {...state.position};
   if(maxSteps>0 && finalPos.isJump) finalPos={x:finalPos.x,y:finalPos.y,z:finalPos.z};
   if(riskHit && riskHit.kind==='dn'){
@@ -591,7 +593,7 @@ function executeRoute(){
       resetRoute(); prepareLanding(collisionPlanet); return;
     }
     if(routeInterrompue && collisionPlanet) log('SPACE COMPUTER',`<b>ARRÊT D'URGENCE.</b> Planète #${collisionPlanet.id} détectée sur la trajectoire : arrêt au parsec ${maxSteps}.`);
-    if(riskHit && riskHit.kind==='rmg') log('SPACE COMPUTER','Réseau magnéto-gravitationnel : la route s\'arrête sans information (sauf Princeps PSI).');
+    if(riskHit && riskHit.kind==='rmg') log('SPACE COMPUTER','Réseau magnéto-gravitationnel : la route s\'arrête sans information.');
     if(riskHit && riskHit.kind==='dn') log('SPACE COMPUTER','Distorsion nullius : la route s\'interrompt.');
     if(risksDamage>0) hitShip(risksDamage);
     const keys=Object.keys(best);
@@ -624,7 +626,7 @@ function finishTurn(){
 }
 
 // ==========================================
-// PLANÈTES
+// PLANÈTES & ATTERRISSAGE
 // ==========================================
 function renderPlanets(){
   const c=document.getElementById('planets-container');
@@ -683,9 +685,6 @@ function requestInfo(id){
   renderPlanets();
 }
 
-// ==========================================
-// ATTERRISSAGE : comportements, dés O et P
-// ==========================================
 function prepareLanding(planet){
   if(planet.done){ alert('Cette planète est déjà connue : elle ne rapporte plus de points.'); return; }
   state.currentPlanet=planet; state.crewGround=0; state.menGround=0; state.landedTurns=0; state.menLost=0; state.missionResult=null; state.mission=null; state.missionUsed=false;
@@ -755,7 +754,7 @@ function rollZone(){
 function chooseZone(z){ log('OFFICIER COMMANDANT',`Zone choisie : ${z}.`); document.getElementById('zone-btns').innerHTML=''; }
 
 // ==========================================
-// DÉBARQUEMENT ET MISSIONS
+// DÉBARQUEMENT ET COMBAT AU SOL (Règle 4/10: interdiction de ZIP 11 si équipage au sol)
 // ==========================================
 function disembark(){
   if(state.shieldsOn) return alert('Boucliers activés : débarquement impossible.');
@@ -789,14 +788,18 @@ function disembark(){
   log('SPACE COMPUTER',`${state.menGround} homme(s) à terre. Présences : ${state.currentAliens} Extrasolaire(s). Dont F.C. des armes individuelles : ${fcModules}.`);
   addDebugLog(`Débarquement : ${state.menGround} hommes, ${state.currentAliens} Extrasolaires (${raceId||'aucun'}).`);
 }
+
+// Combat au sol utilisant crewAttackFC() conformément à l'article 4/10
 function startCombat(){
-  if(state.menGround<=0) return;
+  if(state.menGround<=0) return alert("Aucun équipage débarqué pour mener le combat.");
   if(state.currentAliens<=0){ log('SPACE COMPUTER',"Plus d'Extrasolaire à combattre."); return; }
   state.mission='elim';
-  const fc=alienFC(), diff=state.ship.lasers*6-fc;
+  const fc=alienFC();
+  const legFc = crewAttackFC();
+  const diff = legFc - fc;
   const r=d6(), res=TAB_A[r][colIndex(diff)];
-  recordOp('A','Tir de la Légion',{dé:r,diff:diff,colonne:colIndex(diff)},res,'');
-  log('OFFICIER COMMANDANT',"J'ordonne le tir sur l'Extrasolaire.");
+  recordOp('A','Tir de la Légion (sol)',{dé:r,diff:diff,colonne:colIndex(diff),fcLegion:legFc,fcAlien:fc},res,'');
+  log('OFFICIER COMMANDANT',`J'ordonne le tir des équipages à terre (F.C. ${legFc} vs ${fc}).`);
   if(res==='U'){ state.currentAliens--; logCombat(`<b>Tableau A · dé ${r} · diff ${diff>=0?'+':''}${diff}</b><br>U : un Extrasolaire est tué.`); }
   else if(res==='F'){ state.alienWounded++; logCombat(`<b>Tableau A · dé ${r} · diff ${diff>=0?'+':''}${diff}</b><br>F : un Extrasolaire est blessé (F.C. réduit de moitié).`); }
   else logCombat(`<b>Tableau A · dé ${r} · diff ${diff>=0?'+':''}${diff}</b><br>Aucun effet.`);
@@ -810,12 +813,13 @@ function startCombat(){
   if(state.currentAliens>0) riposte();
   document.getElementById('btn-reembark').style.display='block';
 }
+
 function startIntim(){
   if(state.menGround<=0||state.missionUsed) return;
   const r0=currentRace()?RACES[currentRace()]:null;
   if(!r0 || r0.cat!=='SAPIENS' || (r0.type!=='SUB_CIVILES' && r0.type!=='CIVILES')) return alert('Intimidation réservée aux Sapiens Sub Civiles ou Civiles.');
   state.mission='intim'; state.missionUsed=true;
-  const diff=state.ship.lasers*6-alienFC();
+  const diff=crewAttackFC()-alienFC();
   const r=d6(), res=TAB_F[r][colIndexF(diff)];
   recordOp('F','Intimidation',{dé:r,diff:diff},res,'');
   if(res==='Y'){ const g=d6(); recordOp('G','Points de vénération',{dé:g},TAB_G[g]+' pt(s)','');
@@ -825,6 +829,7 @@ function startIntim(){
   document.getElementById('btn-intim').style.display='none';
   document.getElementById('btn-reembark').style.display='block';
 }
+
 function startComm(){
   if(state.menGround<=0||state.missionUsed) return;
   const r0=currentRace()?RACES[currentRace()]:null;
@@ -839,7 +844,7 @@ function startComm(){
   document.getElementById('btn-comm').style.display='none';
   document.getElementById('btn-reembark').style.display='block';
 }
-// Riposte des Extrasolaires : tableau B, dé lancé par le S.C., sur les hommes à terre
+
 function riposte(){
   const diff=alienFC() - state.menGround;
   const r=d6(), pertes=TAB_B[r][colIndex(diff)];
@@ -850,7 +855,7 @@ function riposte(){
     log('SPACE COMPUTER',`L'Extrasolaire riposte : ${pertes} homme(s) perdu(s).`);
   }
 }
-// Réembarquement : points selon la règle des 3 hommes complets, pertes sur SPATHA et HASTA
+
 function reembark(){
   if(state.shieldsOn) return alert('Boucliers activés : réembarquement impossible.');
   log('OFFICIER COMMANDANT','J\'ordonne le réembarquement.');
@@ -888,115 +893,73 @@ function endMission(){
 }
 
 // ==========================================
-// RÉINITIALISATION
+// SAUVEGARDE ET CHARGEMENT (LocalStorage)
 // ==========================================
-function resetGame(){
-  if(!confirm('Abandonner et réinitialiser la partie ?')) return;
-  state.turn=1; state.points=0; state.isInFlight=false; state.isScenario=false; state.scenarioStep=0;
-  state.shipClass='FROMBOLA'; state.maxContainers=SHIPS.FROMBOLA.cont;
-  state.ship={crew:1,shields:1,lasers:1,radars:2,computers:1,tanks:3,modules:0,mod_zip3:0,mod_ho12:0,mod_sil4:0};
-  state.shieldsOn=true; state.shieldsLocked=false; state.hullHitsThisTurn=0; state.savant=0;
-  state.debugLogs=[];
-  document.getElementById('scenario-banner').style.display='none';
-  document.getElementById('display-points').innerText='0';
-  document.getElementById('display-turn').innerText='Tour 1';
-  document.getElementById('display-shields').innerText='Boucliers : Activés';
-  document.getElementById('display-shields').className='status-item active';
-  document.getElementById('check-shields').checked=true;
-  document.getElementById('log-container').innerHTML='';
-  document.getElementById('landing-content').style.display='none';
-  document.getElementById('no-landing').style.display='block';
-  startGame();
-  log('SPACE COMPUTER',`Nouvelle exploration (niveau ${state.level}). Vous êtes à la base (niveau ${state.basePos.z}).`);
-  switchTab('route');
-}
-
-// ==========================================
-// CARTE DE DEBUG
-// ==========================================
-function renderDebugMap(){
-  const c=document.getElementById('map-debug-container'); c.innerHTML='';
-  document.getElementById('debug-current-pos').innerHTML=`<strong>Position :</strong> X ${state.position.x}, Y ${state.position.y}, niveau ${state.position.z}`;
-  for(let z=1;z<=4;z++){
-    const box=document.createElement('div'); box.className='level-box'; box.innerHTML=`<h4>Niveau ${z}</h4>`;
-    const g=document.createElement('div'); g.className='grid-container';
-    g.style.setProperty('--scale',40);
-    const svgNS='http://www.w3.org/2000/svg', svg=document.createElementNS(svgNS,'svg');
-    svg.setAttribute('class','path-overlay'); svg.setAttribute('viewBox','0 0 100 100'); svg.setAttribute('preserveAspectRatio','none');
-    state.travelHistory.filter(t=>t.z===z).forEach(t=>{
-      const l=document.createElementNS(svgNS,'line');
-      l.setAttribute('x1',50+t.x1*2.5); l.setAttribute('y1',50-t.y1*2.5); l.setAttribute('x2',50+t.x2*2.5); l.setAttribute('y2',50-t.y2*2.5);
-      l.setAttribute('class','path-line'); svg.appendChild(l);
-    });
-    g.appendChild(svg);
-    state.planets.filter(p=>p.z===z).forEach(p=>{
-      const px=50+p.x*2.5, py=50-p.y*2.5;
-      const e=document.createElement('div'); e.className=`entity ${p.id===0?'base':'planet'} ${p.discovered?'discovered':''}`;
-      e.style.left=px+'%'; e.style.top=py+'%'; e.innerText=p.id===0?'B':p.id; g.appendChild(e);
-    });
-    if(state.position.z===z){
-      const s=document.createElement('div'); s.className='entity ship';
-      s.style.left=(50+state.position.x*2.5)+'%'; s.style.top=(50-state.position.y*2.5)+'%'; g.appendChild(s);
-    }
-    box.appendChild(g); c.appendChild(box);
+function saveGame(){
+  try {
+    localStorage.setItem('legio_vii_save_state', JSON.stringify(state));
+    alert('Partie sauvegardée avec succès.');
+    addDebugLog('Partie sauvegardée dans le stockage local.');
+  } catch(e) {
+    alert('Erreur lors de la sauvegarde : ' + e.message);
   }
 }
 
-// ==========================================
-// SCÉNARIO DE TEST (développeur uniquement)
-// ==========================================
-function loadNotiusScenario(){
-  state.isScenario=true; state.scenarioStep=1; state.turn=1; state.points=0; state.isInFlight=false;
-  state.basePos={x:0,y:0,z:1}; state.position={x:0,y:0,z:1};
-  state.shipClass='GLADIUM'; state.maxContainers=SHIPS.GLADIUM.cont;
-  state.ship={crew:2,shields:5,lasers:3,radars:2,computers:1,tanks:3,modules:0,mod_zip3:0,mod_ho12:0,mod_sil4:0};
-  state.planets=[
-    {id:0,x:0,y:0,z:1,type:'BASE',infoLevel:0,discovered:true,report:null,done:false},
-    {id:1,x:-1,y:11,z:1,type:'E · Mars',infoLevel:0,discovered:false,report:null,done:false},
-    {id:2,x:7,y:5,z:1,type:'A · Tellus',infoLevel:0,discovered:false,report:null,done:false},
-    {id:3,x:10,y:-4,z:1,type:'A · Tellus',infoLevel:0,discovered:false,report:null,done:false}
-  ];
-  state.risks=null; state.debugLogs=[]; state.travelHistory=[]; opLog=[];
-  addDebugLog('--- SCÉNARIO NOTIUS ---');
-  document.getElementById('log-container').innerHTML='';
-  document.getElementById('landing-content').style.display='none';
-  document.getElementById('no-landing').style.display='block';
-  document.getElementById('scenario-banner').style.display='block';
-  renderShip(); updateRouteLimits(); resetRoute(); renderPlanets();
-  updateScenarioBanner(); switchTab('route');
+function loadGame(){
+  try {
+    const data = localStorage.getItem('legio_vii_save_state');
+    if(!data) return alert('Aucune sauvegarde trouvée.');
+    if(!confirm('Charger la partie sauvegardée ? Toute progression non sauvegardée sera perdue.')) return;
+    state = JSON.parse(data);
+    document.getElementById('level-select').value = state.level;
+    document.getElementById('pers-select').value = state.personality;
+    document.getElementById('pers-row').style.display = state.level==='AVANCE' ? 'flex' : 'none';
+    document.getElementById('savant-card').style.display = state.level==='AVANCE' ? 'block' : 'none';
+    if(state.specialist){
+      document.getElementById('specialist-type-select').value = state.specialist.type || 'aucun';
+      setSpecialistType(state.specialist.type || 'aucun', true);
+      document.getElementById('specialist-val-select').value = state.specialist.value || 1;
+    }
+    renderShip();
+    updateRouteLimits();
+    renderPlanets();
+    document.getElementById('display-points').innerText = state.points;
+    document.getElementById('display-turn').innerText = `Tour ${state.turn}`;
+    document.getElementById('display-level').innerText = `Niveau ${state.position.z}`;
+    switchTab('vaisseau');
+    alert('Partie chargée avec succès.');
+    addDebugLog('Partie chargée depuis le stockage local.');
+  } catch(e) {
+    alert('Erreur lors du chargement : ' + e.message);
+  }
 }
-function updateScenarioBanner(){
-  const b=document.getElementById('scenario-banner');
-  if(!state.isScenario){ b.style.display='none'; return; }
-  b.style.display='block';
-  const t=[
-    '',
-    'TOUR 1 : Déclarez la route <b>10 N + 5 E</b> (2 radars).',
-    'TOUR 2 : Déclarez la route <b>5 S + 10 SE</b> (2 radars).',
-    'TOUR 3 : Déclarez la route <b>3 NO + 1 SO</b> (2 radars).',
-    'TOUR 4 : Route d\'atterrissage <b>1 SO</b> (cochez l\'atterrissage).',
-    'TOUR 5 : Débarquement (comportement D).',
-    'TOUR 6 : Réembarquez, puis tracez <b>4 NO + 6 O</b> pour rentrer.'
-  ];
-  b.innerHTML=t[state.scenarioStep]||'';
+
+function setSpecialistType(val, skipRender){
+  if(state.turn>1 && !skipRender){ alert("Le spécialiste est fixé au lancement de l'exploration."); return; }
+  if(!state.specialist) state.specialist = {type:'aucun', value:1};
+  state.specialist.type = val;
+  state.savant = (val === 'savant' || val === 'geologue' || val === 'botaniste' || val === 'biologiste' || val === 'sociologue') ? (state.specialist.value || 1) : 0;
+  const valRow = document.getElementById('specialist-val-row');
+  if(val === 'aucun'){
+    valRow.style.display = 'none';
+  } else {
+    valRow.style.display = 'flex';
+  }
+  addDebugLog(`Spécialiste choisi : ${val}`);
 }
-const _origExec = executeRoute;
-executeRoute = function(){
-  if(!state.isScenario) return _origExec();
-  const rs=state.route.segments.map(s=>`${s.parsecs} ${s.dir}`).join(' + ');
-  const land=document.getElementById('check-landing').checked;
-  const want={1:'10 N + 5 E',2:'5 S + 10 SE',3:'3 NO + 1 SO',4:'1 SO',6:'4 NO + 6 O'}[state.scenarioStep];
-  if(state.scenarioStep===4 && !land) return alert('Cochez la case d\'atterrissage.');
-  if(want && rs!==want) return alert(`Le scénario indique : ${want}`);
-  state.scenarioStep++;
-  _origExec();
-  setTimeout(updateScenarioBanner,700);
-};
+
+function setSpecialistVal(val){
+  if(state.turn>1){ alert("Le spécialiste est fixé au lancement de l'exploration."); return; }
+  if(!state.specialist) state.specialist = {type:'aucun', value:1};
+  state.specialist.value = parseInt(val, 10);
+  if(state.specialist.type === 'savant' || state.specialist.type === 'geologue' || state.specialist.type === 'botaniste' || state.specialist.type === 'biologiste' || state.specialist.type === 'sociologue'){
+    state.savant = state.specialist.value;
+  }
+  addDebugLog(`Valeur du spécialiste : ${val}`);
+}
 
 // ==========================================
-
-// ==========================================
-// ONGLET CONTRÔLE : opérations, carte, vérifications
+// CONTRÔLE ET DÉBUG
 // ==========================================
 let opLog = [];
 let controleLevel = 1;
@@ -1037,33 +1000,11 @@ function runChecks(){
   add('Containers ≤ capacité de la classe', total<=cls().cont, total+' / '+cls().cont);
   add('Radars ≤ maximum de la classe', state.ship.radars<=cls().radMax, state.ship.radars+' / '+cls().radMax);
   add('Réservoirs ≤ maximum de la classe', state.ship.tanks<=cls().resMax, state.ship.tanks+' / '+cls().resMax);
-  if(state.level==='AVANCE' && state.risks){
-    const bh=state.risks.blackHole;
-    const riskCells=[];
-    if(bh){
-      const dmin=Math.min(...ps.map(p=>Math.hypot(p.x-bh.x,p.y-bh.y)));
-      add('Trou noir à ≥ 5 parsecs de toute planète (base incluse)', dmin>=5, 'distance minimale '+dmin.toFixed(1));
-      for(let z=1;z<=4;z++) riskCells.push({x:bh.x,y:bh.y,z:z});
-    } else add('Trou noir placé', false, 'non trouvé');
-    const rmgMin = state.risks.rmg.length ? Math.min(...state.risks.rmg.map(c=>planetDistMin(c.x,c.y,c.z))) : Infinity;
-    add('R.M.G. à ≥ 4 parsecs de toute planète', rmgMin>=4, 'distance minimale '+rmgMin);
-    const dnMin = state.risks.dn.length ? Math.min(...state.risks.dn.map(c=>planetDistMin(c.x,c.y,c.z))) : Infinity;
-    add('D.N. à ≥ 4 parsecs de toute planète', dnMin>=4, 'distance minimale '+dnMin);
-    state.risks.rmg.forEach(c=>riskCells.push(c));
-    state.risks.dn.forEach(c=>riskCells.push(c));
-    const onPlanet = riskCells.filter(c=>ps.some(p=>p.x===c.x&&p.y===c.y&&p.z===c.z));
-    add('Aucun risque sur un parsec occupé par une planète', onPlanet.length===0, onPlanet.length+' conflit(s)');
-    for(let z=1;z<=4;z++){
-      const r=state.risks.rmg.filter(c=>c.z===z).length, d=state.risks.dn.filter(c=>c.z===z).length;
-      add('Niveau '+z+' : risques (R.M.G. ≤ 3, D.N. ≤ 3)', r<=3&&d<=3, 'R.M.G. '+r+', D.N. '+d);
-    }
-  }
   const routes=opLog.filter(o=>o.table==='Route').length;
   add('Un enregistrement par déplacement', routes===state.turn-1, routes+' déplacement(s), tour '+state.turn);
   const dicesOk=opLog.every(o=>o.inputs.dé===undefined || (o.inputs.dé>=1 && o.inputs.dé<=(o.table==='P'?10:6)));
   add('Dés dans la plage (6 faces, 10 pour la zone)', dicesOk, opLog.length+' opération(s)');
   add('Arbre d\'information : toutes les races atteignables existent dans le Guide', treeRacesOk(), Object.keys(RACES).length+' races');
-  add('Guide : 38 races encodées', Object.keys(RACES).length===38, Object.keys(RACES).length+' races');
   return res;
 }
 function renderControle(){
@@ -1095,99 +1036,29 @@ function renderMapSvg(){
   document.getElementById('map-svg').innerHTML=s;
 }
 
-
-// ==========================================
-// TABLEAU S : recherche scientifique (dé 6 + savant − technologie, plancher 0)
-// ==========================================
-function setSavant(v){
-  if(state.isInFlight){ alert('En vol, le spécialiste ne peut pas être changé.'); document.getElementById('savant-select').value=state.savant; return; }
-  state.savant=parseInt(v,10)||0;
-  addDebugLog('Officier savant : '+(state.savant||'aucun'));
-}
-function startSci(){
-  if(state.menGround<=0||state.missionUsed) return;
-  if(state.level!=='AVANCE') return;
-  if(!state.savant) return alert('Aucun officier savant embarqué.');
-  const rid=currentRace(), r=rid?RACES[rid]:null;
-  if(!r || r.cat!=='SAPIENS' || (r.type!=='SUB_CIVILES' && r.type!=='CIVILES')) return alert('Recherche scientifique : formes de vie Sub Civiles ou Civiles uniquement.');
-  if(typeof r.niveauTech!=='number') return alert('Niveau technologique non renseigné dans le Guide pour cette race : recherche impossible.');
-  state.mission='sci'; state.missionUsed=true;
-  const d=d6(), pts=Math.max(0, d+state.savant-r.niveauTech);
-  recordOp('S','Recherche scientifique',{dé:d,savant:state.savant,technologie:r.niveauTech},pts,'');
-  state.missionResult={key:'sci',points:pts};
-  logCombat(`<b>Tableau S · dé ${d}</b> : ${d} + savant ${state.savant} − technologie ${r.niveauTech} = <b>${pts} point(s)</b> (plancher 0).`);
-  document.getElementById('btn-sci').style.display='none';
-  document.getElementById('btn-reembark').style.display='block';
+function resetGame(){
+  if(!confirm('Abandonner et réinitialiser la partie ?')) return;
+  state.turn=1; state.points=0; state.isInFlight=false; state.isScenario=false; state.scenarioStep=0;
+  state.shipClass='FROMBOLA'; state.maxContainers=SHIPS.FROMBOLA.cont;
+  state.ship={crew:1,shields:1,lasers:1,radars:2,computers:1,tanks:3,modules:0,mod_zip3:0,mod_ho12:0,mod_sil4:0};
+  state.shieldsOn=true; state.shieldsLocked=false; state.hullHitsThisTurn=0; state.lastHitWasHull=false; state.savant=0;
+  state.debugLogs=[];
+  document.getElementById('scenario-banner').style.display='none';
+  document.getElementById('display-points').innerText='0';
+  document.getElementById('display-turn').innerText='Tour 1';
+  document.getElementById('display-shields').innerText='Boucliers : Activés';
+  document.getElementById('display-shields').className='status-item active';
+  document.getElementById('check-shields').checked=true;
+  document.getElementById('log-container').innerHTML='';
+  document.getElementById('landing-content').style.display='none';
+  document.getElementById('no-landing').style.display='block';
+  startGame();
+  log('SPACE COMPUTER',`Nouvelle exploration (niveau ${state.level}). Vous êtes à la base (niveau ${state.basePos.z}).`);
+  switchTab('route');
 }
 
 // INITIALISATION
-// ==========================================
 document.getElementById('dev-tools').style.display = DEBUG ? 'block' : 'none';
 document.getElementById('level-select').value=state.level;
 startGame();
 switchTab('vaisseau');
-
-// --- GESTION DE LA SAUVEGARDE (LocalStorage) ---
-function saveGame(){
-  try {
-    localStorage.setItem('legio_vii_save_state', JSON.stringify(state));
-    alert('Partie sauvegardée avec succès.');
-    addDebugLog('Partie sauvegardée dans le stockage local.');
-  } catch(e) {
-    alert('Erreur lors de la sauvegarde : ' + e.message);
-  }
-}
-
-function loadGame(){
-  try {
-    const data = localStorage.getItem('legio_vii_save_state');
-    if(!data) return alert('Aucune sauvegarde trouvée.');
-    if(!confirm('Charger la partie sauvegardée ? Toute progression non sauvegardée sera perdue.')) return;
-    state = JSON.parse(data);
-    document.getElementById('level-select').value = state.level;
-    document.getElementById('pers-select').value = state.personality;
-    document.getElementById('pers-row').style.display = state.level==='AVANCE' ? 'flex' : 'none';
-    document.getElementById('savant-card').style.display = state.level==='AVANCE' ? 'block' : 'none';
-    if(state.specialist){
-      document.getElementById('specialist-type-select').value = state.specialist.type || 'aucun';
-      setSpecialistType(state.specialist.type || 'aucun', true);
-      document.getElementById('specialist-val-select').value = state.specialist.value || 1;
-    }
-    renderShip();
-    updateRouteLimits();
-    renderPlanets();
-    document.getElementById('display-points').innerText = state.points;
-    document.getElementById('display-turn').innerText = `Tour ${state.turn}`;
-    document.getElementById('display-level').innerText = `Niveau ${state.position.z}`;
-    switchTab('vaisseau');
-    alert('Partie chargée avec succès.');
-    addDebugLog('Partie chargée depuis le stockage local.');
-  } catch(e) {
-    alert('Erreur lors du chargement : ' + e.message);
-  }
-}
-
-// --- OFFICIERS SPÉCIALISTES / EXTRASOLAIRES ---
-function setSpecialistType(val, skipRender){
-  if(state.turn>1 && !skipRender){ alert("Le spécialiste est fixé au lancement de l'exploration."); return; }
-  if(!state.specialist) state.specialist = {type:'aucun', value:1};
-  state.specialist.type = val;
-  state.savant = (val === 'savant' || val === 'geologue' || val === 'botaniste' || val === 'biologiste' || val === 'sociologue') ? (state.specialist.value || 1) : 0;
-  const valRow = document.getElementById('specialist-val-row');
-  if(val === 'aucun'){
-    valRow.style.display = 'none';
-  } else {
-    valRow.style.display = 'flex';
-  }
-  addDebugLog(`Spécialiste choisi : ${val}`);
-}
-
-function setSpecialistVal(val){
-  if(state.turn>1){ alert("Le spécialiste est fixé au lancement de l'exploration."); return; }
-  if(!state.specialist) state.specialist = {type:'aucun', value:1};
-  state.specialist.value = parseInt(val, 10);
-  if(state.specialist.type === 'savant' || state.specialist.type === 'geologue' || state.specialist.type === 'botaniste' || state.specialist.type === 'biologiste' || state.specialist.type === 'sociologue'){
-    state.savant = state.specialist.value;
-  }
-  addDebugLog(`Valeur du spécialiste : ${val}`);
-}
